@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="page">
       <div className="home-hero">
-        <h1 className="home-title">Welcome to Daimaou Shop</h1>
+        <h1 className="home-title">Welcome to Basic Shop</h1>
         <p className="home-subtitle">Discover amazing product at low price!</p>
       </div>
       <div className="container">

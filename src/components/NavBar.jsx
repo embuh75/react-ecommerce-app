@@ -5,7 +5,7 @@ export default function NavBar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to={"/"} className="navbar-brand">
-          Daimaou Shop
+          Basic Shop
         </Link>
         <div className="navbar-links">
           <Link to={"/"} className="navbar-link">
