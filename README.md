@@ -1,4 +1,4 @@
-# Website E-Commerece Basic
+# Website E-Commerece Basic (Vite + ReactJS)
 
 Website e-commerece basic sing digawe karo riek.
 
