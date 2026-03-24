@@ -1,18 +1,21 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../lib/context/createContext";
+import { AuthContext } from "../lib/context/AuthContext";
 
 export default function AuthForm() {
-  const { signUp } = useContext(AuthContext);
-  const [switchForm, setswitchForm] = useState(true);
+  const { signUp, signIn } = useContext(AuthContext);
+  const [switchForm, setSwitchForm] = useState(true);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    signUp(data.email, data.password)
+  const onSubmit = async (data) => {
+    if (switchForm){
+      signUp(data.email, data.password);
+    }
+    signIn(data.email, data.password);
   };
 
   return (
@@ -68,7 +71,7 @@ export default function AuthForm() {
                 : "Dont have an account?"}
               <span
                 className="text-[#0056B3] hover:text-slate-400 font-bold cursor-pointer"
-                onClick={() => setswitchForm(!switchForm)}
+                onClick={() => setSwitchForm(!switchForm)}
               >
                 {switchForm ? "Sign-In" : "Sign-Up"}
               </span>

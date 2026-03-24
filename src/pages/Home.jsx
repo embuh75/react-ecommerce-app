@@ -1,5 +1,5 @@
 import ProductCard from "../components/ProductCard";
-import { products } from "../lib/data/prosucts";
+import { products } from "../lib/data/products";
 
 export default function Home() {
   return (
