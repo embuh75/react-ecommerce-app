@@ -1,21 +1,34 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../lib/context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../lib/context/AuthContext";
 
 export default function AuthForm() {
-  const { signUp, signIn } = useContext(AuthContext);
+  const { signUp, signIn } = useAuth();
+  const [error, setError] = useState(null);
   const [switchForm, setSwitchForm] = useState(true);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    if (switchForm){
-      signUp(data.email, data.password);
+  const onSubmit = (data) => {
+    setError(null);
+    let result;
+
+    if (switchForm) {
+      result = signUp(data.email, data.password);
+    } else {
+      result = signIn(data.email, data.password);
     }
-    signIn(data.email, data.password);
+
+    if (result.success) {
+      navigate("/")
+    };
+
+    setError(result)
   };
 
   return (
@@ -58,6 +71,7 @@ export default function AuthForm() {
             })}
           />
         </div>
+        {error && <div className="error-message">{error.error}</div>}
         <div className="flex flex-wrap items-center">
           <div className="w-1/2">
             <button type="submit" className="btn btn-primary btn-large">

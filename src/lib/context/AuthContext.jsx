@@ -1,12 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const AuthContext = createContext(null);
+const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")),
   );
+  const navigate = useNavigate();
 
   const signUp = (email, password) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -23,20 +24,25 @@ export default function AuthProvider({ children }) {
 
   const signIn = (email, password) => {
     const users = JSON.parse(localStorage.getItem("users"));
-    const user = users.find(u => u.email === email && u.password === password);
+    const user = users.find(
+      (u) => u.email === email && u.password === password,
+    );
 
-    if(!user) {
-      return {success: false, error: "user atau password salah atau user tidak ada!"};
+    if (!user) {
+      return {
+        success: false,
+        error: "user atau password salah atau user tidak ada!",
+      };
     }
 
     localStorage.setItem("currentUser", JSON.stringify(email));
-    window.location.reload();
     return { success: true };
   };
 
   const signOut = () => {
     localStorage.removeItem("currentUser");
     setUser(null);
+    navigate("/");
   };
 
   return (
@@ -44,4 +50,10 @@ export default function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function useAuth() {
+  const context = useContext(AuthContext);
+  return context;
 }
