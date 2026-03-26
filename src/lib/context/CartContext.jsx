@@ -6,38 +6,39 @@ export default function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
+    const exists = cartItems.some((item) => item.id === product.id);
+
+    if (exists) {
+      const updateProduct = cartItems.map((item) => item.id === product.id ? { ...item, qty: item.qty + 1 } : item);
+      setCartItems(updateProduct);
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    }
+  };
+
+  const delItem = (product) => {
+    const deletedItem = cartItems.filter((item) => item.id !== product.id);
+    setCartItems(deletedItem);
+  };
+
+  const decToCart = (product) => {
     const existingProduct = cartItems.find((found) => found.id === product.id);
 
     if (existingProduct) {
-      const curretnQTY = existingProduct.qty;
-      const updatedQTY = cartItems.map((item) =>
-        item.id === product.id
-          ? {
-              id: product.id,
-              name: product.name,
-              image: product.image,
-              price: product.price,
-              qty: curretnQTY + 1,
-            }
-          : item,
-      );
-      setCartItems(updatedQTY);
-    } else {
-      setCartItems([
-        ...cartItems,
-        {
-          id: product.id,
-          name: product.name,
-          image: product.image,
-          price: product.price,
-          qty: 1,
-        },
-      ]);
+      if (existingProduct.qty === 1) {
+        delItem(product);
+      } else {
+        setCartItems(
+          cartItems.map((item) =>
+            item.id === product.id ? { ...item, qty: item.qty - 1 } : item,
+          ),
+        );
+      }
     }
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, cartItems }}>
+    <CartContext.Provider value={{ addToCart, decToCart, delItem, cartItems }}>
       {children}
     </CartContext.Provider>
   );

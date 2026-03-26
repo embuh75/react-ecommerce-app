@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../lib/context/AuthContext";
+import { useCart } from "../lib/context/CartContext";
 
 export default function NavBar() {
   const { user, signOut } = useAuth();
+  const { cartItems } = useCart();
 
   return (
     <nav className="navbar">
@@ -14,8 +16,16 @@ export default function NavBar() {
           <Link to={"/"} className="navbar-link">
             Home
           </Link>
-          <Link to={"/checkout"} className="navbar-link">
+          <Link
+            to={"/checkout"}
+            className="navbar-link flex items-center gap-1"
+          >
             Chart
+            {cartItems.length > 0 && (
+              <span className="bg-red-500 text-white text-xs font-semibold min-w-4.5 h-4.5 rounded-full flex items-center justify-center px-1">
+                {cartItems.length}
+              </span>
+            )}
           </Link>
         </div>
         <div className="navbar-auth">
