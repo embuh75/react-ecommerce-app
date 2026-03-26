@@ -24,12 +24,12 @@ export default function NavBar() {
               <div className="navbar-user">
                 <span className="navbar-greeting">{user}</span>
                 <button className="btn btn-secondary" onClick={() => signOut()}>
-                  SignOut
+                  Sign-Out
                 </button>
               </div>
             ) : (
               <Link className="btn btn-primary" to={"/auth"}>
-                SignIn
+                Sign-Up
               </Link>
             )}
           </div>

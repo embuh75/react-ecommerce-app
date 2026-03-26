@@ -75,7 +75,7 @@ export default function AuthForm() {
         <div className="flex flex-wrap items-center">
           <div className="w-1/2">
             <button type="submit" className="btn btn-primary btn-large">
-              {switchForm ? "Sign Up" : "Sign In"}
+              {switchForm ? "Sign-Up" : "Sign-In"}
             </button>
           </div>
           <div className="w-1/2">

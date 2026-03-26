@@ -2,7 +2,8 @@ import ProductCard from "../components/ProductCard";
 import { getProducts } from "../lib/data/products";
 
 export default function Home() {
-  const products = getProducts();
+  const products = getProducts()
+
   return (
     <div className="page">
       <div className="home-hero">
