@@ -1,22 +1,10 @@
-import { useCart } from "../lib/context/CartContext";
-import ItemCard from "../components/ItemCard";
-import TotalProduct from "../components/TotalProduct";
+import CheckoutSummary from "../components/CheckoutSummary";
 
 export default function Checkout() {
-  const { cartItems } = useCart();
   return (
     <div className="page">
       <div className="container">
-        <h1 className="page-title">Checkout Summary</h1>
-        <div className="checkout-container">
-          <div className="checkout-items">
-            <h2 className="checkout-section-title">Order Summary</h2>
-            {cartItems.map((item) => (
-              <ItemCard item={item} key={item.id} />
-            ))}
-          </div>
-          <TotalProduct item={cartItems} />
-        </div>
+       <CheckoutSummary />
       </div>
     </div>
   );
