@@ -1,5 +1,6 @@
 import { useCart } from "../lib/context/CartContext";
 import ItemCard from "../components/ItemCard";
+import TotalProduct from "../components/TotalProduct";
 
 export default function Checkout() {
   const { cartItems } = useCart();
@@ -14,6 +15,7 @@ export default function Checkout() {
               <ItemCard item={item} key={item.id} />
             ))}
           </div>
+          <TotalProduct item={cartItems} />
         </div>
       </div>
     </div>
