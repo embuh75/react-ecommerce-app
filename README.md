@@ -2,18 +2,27 @@
 
 Website e-commerece basic sing digawe karo riek.
 
-Feature:
+Feature⭐:
 - Product List
 - Dashboard (ngelola produk)
 - Authentication
 - Chart List
 - Website Profile
-- fully responsive 
+- fully responsive
 
-Todo List:
-- Main Page (Home, Chart, Auth)
+Tech stack🤖:
+- vite
+- React, react-hook-dom
+- TailwindCSS
+
+Todo List📝:
+- Main Page (Home, Chart, Auth) ✅
 - fix responsive on some page
-- Detail Product & Chart feature
-- Authentication
-- Setup Backend
+- Detail Product & Chart feature ✅
+- Authentication ✅
+- Setup Backend 
 - Dashboard
+
+Cara Menjalankan🚀:
+- bun install
+- bun run dev
