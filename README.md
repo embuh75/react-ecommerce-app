@@ -8,10 +8,12 @@ Feature:
 - Authentication
 - Chart List
 - Website Profile
+- fully responsive 
 
 Todo List:
-- Main Page (Home, About, Product)
-- Detail Product & Chart
+- Main Page (Home, Chart, Auth)
+- fix responsive on some page
+- Detail Product & Chart feature
 - Authentication
 - Setup Backend
 - Dashboard
