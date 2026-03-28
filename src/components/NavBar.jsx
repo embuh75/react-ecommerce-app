@@ -10,15 +10,26 @@ export default function NavBar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to={"/"} className="navbar-brand">
-          Basic Shop
+          <div className="group">
+            <div className="flex items-center justify-between gap-2 group-hover:scale-105 transition-all ease-in-out duration-300">
+              <img
+                src="/nekoarch.png"
+                alt="logo"
+                className="w-10 rounded-full bg-white"
+              />
+              <span className="font-mono text-xl group-hover:text-[#007bff]">
+                Basic Shop
+              </span>
+            </div>
+          </div>
         </Link>
         <div className="navbar-links">
-          <Link to={"/"} className="navbar-link">
+          <Link to={"/"} className="navbar-link hover:scale-105">
             Home
           </Link>
           <Link
             to={"/checkout"}
-            className="navbar-link flex items-center gap-1"
+            className="navbar-link flex items-center gap-1 hover:scale-105"
           >
             Chart
             {cartItems.length > 0 && (
@@ -28,6 +39,7 @@ export default function NavBar() {
             )}
           </Link>
         </div>
+        {/* ganti bagian ini jadi drop-down menu yang ada avatarnya */}
         <div className="navbar-auth">
           <div className="navbar-auth-links">
             {user ? (
