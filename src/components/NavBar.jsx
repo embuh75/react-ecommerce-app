@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../lib/context/AuthContext";
 import { useCart } from "../lib/context/CartContext";
+import AvatarMenu from "./AvatarMenu";
 
 export default function NavBar() {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const { cartItems } = useCart();
-
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -39,23 +39,13 @@ export default function NavBar() {
             )}
           </Link>
         </div>
-        {/* ganti bagian ini jadi drop-down menu yang ada avatarnya */}
-        <div className="navbar-auth">
-          <div className="navbar-auth-links">
-            {user ? (
-              <div className="navbar-user">
-                <span className="navbar-greeting">{user}</span>
-                <button className="btn btn-secondary" onClick={() => signOut()}>
-                  Sign-Out
-                </button>
-              </div>
-            ) : (
-              <Link className="btn btn-primary" to={"/auth"}>
-                Sign-Up
-              </Link>
-            )}
-          </div>
-        </div>
+        {user ? (
+          <AvatarMenu />
+        ) : (
+          <Link className="btn btn-primary" to={"/auth"}>
+            Sign-Up
+          </Link>
+        )}
       </div>
     </nav>
   );
