@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function UserProfileDropdown({user, signOut}) {
   return (
-    <div className="absolute z-50 top-20 right-0">
+    <div className="absolute z-50 top-20 right-1">
       <div className="w-56 bg-white rounded-md shadow-md overflow-hidden">
         {/* User Info */}
         <div className="px-4 py-3">
@@ -16,7 +16,7 @@ export default function UserProfileDropdown({user, signOut}) {
         {/* Action */}
         <button
           onClick={() => signOut()}
-          className="w-full text-left px-4 py-2 text-sm font-semibold text-slate-500 hover:bg-slate-100 hover:text-red-600 transition"
+          className="w-full text-left px-4 py-2 text-sm font-semibold text-slate-500 hover:bg-slate-100 hover:text-red-600 hover:cursor-pointer transition-all duration-300"
         >
           Sign Out
         </button>
